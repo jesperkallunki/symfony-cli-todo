@@ -12,7 +12,7 @@ use App\Controller\TodoController;
 
 class TodoRemoveCommand extends Command
 {
-    protected static $defaultName = "remove";
+    protected static $defaultName = "todo:remove";
 
     protected function configure()
     {

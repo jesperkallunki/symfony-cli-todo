@@ -12,7 +12,7 @@ use App\Controller\TodoController;
 
 class TodoCompleteCommand extends Command
 {
-    protected static $defaultName = "complete";
+    protected static $defaultName = "todo:complete";
 
     protected function configure()
     {

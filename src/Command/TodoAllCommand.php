@@ -13,7 +13,7 @@ use Symfony\Component\Console\Helper\Table;
 
 class TodoAllCommand extends Command
 {
-    protected static $defaultName = "all";
+    protected static $defaultName = "todo:all";
 
     protected function configure()
     {

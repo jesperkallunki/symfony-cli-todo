@@ -13,7 +13,7 @@ use App\Controller\TodoController;
 
 class TodoNewCommand extends Command
 {
-    protected static $defaultName = "new";
+    protected static $defaultName = "todo:new";
 
     protected function configure()
     {
