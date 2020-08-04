@@ -36,19 +36,9 @@ class TodoRemoveCommand extends Command
     {
         $id = $input->getArgument("id");
 
-        if ($id)
-        {
-            if ($this->todoController->remove($id))
-            {
-                $output->writeln("Removed todo with id " . $id . ".");
-                return Command::SUCCESS;
-            }
+        $this->todoController->remove($id);
 
-            $output->writeln("No todo with id " . $id . ".");
-            return Command::FAILURE;
-        }
-
-        $output->writeln("Please provide todo id.");
-        return Command::FAILURE;
+        $output->writeln("Removed todo with id " . $id . ".");
+        return Command::SUCCESS;
     }
 }

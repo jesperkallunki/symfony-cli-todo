@@ -21,12 +21,10 @@ class TodoController extends AbstractController
 
     public function all()
     {
-        $todos = $this->getDoctrine()
+        return $this->getDoctrine()
             ->getRepository(Todo::class)
             ->findAll()
         ;
-        
-        return $todos;
     }
 
     public function remove($id)
@@ -36,9 +34,7 @@ class TodoController extends AbstractController
             ->find($id)
         ;
 
-        if (!$todo) {
-            throw $this->createNotFoundException();
-        }
+        if (!$todo) throw $this->createNotFoundException();
 
         $manager = $this->getDoctrine()->getManager();
         $manager->remove($todo);
@@ -52,9 +48,7 @@ class TodoController extends AbstractController
             ->find($id)
         ;
 
-        if (!$todo) {
-            throw $this->createNotFoundException();
-        }
+        if (!$todo) throw $this->createNotFoundException();
 
         $todo->setTsCompleted(new \DateTime());
         $todo->setCompleted(true);

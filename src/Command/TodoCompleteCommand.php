@@ -36,19 +36,9 @@ class TodoCompleteCommand extends Command
     {
         $id = $input->getArgument("id");
 
-        if ($id)
-        {
-            if ($this->todoController->complete($id))
-            {
-                $output->writeln("Completed todo with id " . $id . ".");
-                return Command::SUCCESS;
-            }
-            
-            $output->writeln("No todo with id " . $id . ".");
-            return Command::FAILURE;
-        }
+        $this->todoController->complete($id);
 
-        $output->writeln("Please provide todo id.");
-        return Command::FAILURE;
+        $output->writeln("Completed todo with id " . $id . ".");
+        return Command::SUCCESS;
     }
 }
