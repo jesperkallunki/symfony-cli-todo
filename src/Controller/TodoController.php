@@ -19,12 +19,22 @@ class TodoController extends AbstractController
         $manager->flush();
     }
 
-    public function all()
+    public function display($all)
     {
-        return $this->getDoctrine()
-            ->getRepository(Todo::class)
-            ->findAll()
-        ;
+        if ($all)
+        {
+            return $this->getDoctrine()
+                ->getRepository(Todo::class)
+                ->findAll()
+            ;
+        }
+        else
+        {
+            return $this->getDoctrine()
+                ->getRepository(Todo::class)
+                ->findBy(["completed" => null])
+            ;
+        }
     }
 
     public function remove($id)
@@ -54,6 +64,26 @@ class TodoController extends AbstractController
         $todo->setCompleted(true);
 
         $manager = $this->getDoctrine()->getManager();
+        $manager->flush();
+    }
+
+    public function clear()
+    {
+        $todos = $this->getDoctrine()
+            ->getRepository(Todo::class)
+            ->findAll()
+        ;
+
+        $manager = $this->getDoctrine()->getManager();
+
+        foreach ($todos as $todo)
+        {
+            if ($todo->getCompleted())
+            {
+                $manager->remove($todo);
+            }
+        }
+
         $manager->flush();
     }
 }

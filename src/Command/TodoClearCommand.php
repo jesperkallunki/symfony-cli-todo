@@ -9,17 +9,16 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Controller\TodoController;
-use Symfony\Component\Console\Question\Question;
 
-class TodoNewCommand extends Command
+class TodoClearCommand extends Command
 {
-    protected static $defaultName = "todo:new";
+    protected static $defaultName = "todo:clear";
 
     protected function configure()
     {
         $this
-            ->setDescription("Creates a new todo.")
-            ->setHelp("Creates a new todo.")
+            ->setDescription("Removes all completed todos.")
+            ->setHelp("Removes all completed todos.")
         ;
     }
 
@@ -34,20 +33,9 @@ class TodoNewCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $helper = $this->getHelper("question");
-        $question = new Question("Enter todo description: ");
+        $this->todoController->clear();
 
-        $description = $helper->ask($input, $output, $question);
-
-        if ($description)
-        {
-            $this->todoController->new($description);
-
-            $output->writeln("Created new todo!");
-            return Command::SUCCESS;
-        }
-
-        $output->writeln("Please provide todo description.");
-        return Command::FAILURE;
+        $output->writeln("Removed all completed todos.");
+        return Command::SUCCESS;
     }
 }
