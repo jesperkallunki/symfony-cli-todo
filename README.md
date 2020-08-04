@@ -2,7 +2,7 @@
 
 Clone the repository or manually download.
 
-Run the `composer install` in the project root folder.
+Run `composer install` in the project root folder.
 
 Edit the .env file to set up your database and run the following commands in the project root folder.
 
