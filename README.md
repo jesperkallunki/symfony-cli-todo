@@ -1,17 +1,15 @@
-Symfony CLI Todo Application
+## Install
 
-Install
+git clone 
+composer install
 
--git clone 
--composer install
-
-Database
+## Database
 
 Edit the .env file to set up your database.
 
-Commands
+## Commands
 
--todo:new
--todo:all
--todo:complete
--todo:remove
+todo:new
+todo:all
+todo:complete
+todo:remove
