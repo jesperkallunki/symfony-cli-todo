@@ -2,9 +2,7 @@
 
 Clone the repository or manually download.
 
-Run the following command in the project root folder.
-
-`composer install`  
+Run the `composer install` in the project root folder.
 
 Edit the .env file to set up your database and run the following commands in the project root folder.
 
@@ -14,7 +12,7 @@ Edit the .env file to set up your database and run the following commands in the
 
 ## Usage
 
-`php bin/console todo:new  `
-`php bin/console todo:display  `
-`php bin/console todo:complete  `
+`php bin/console todo:new`  
+`php bin/console todo:display`  
+`php bin/console todo:complete`  
 `php bin/console todo:remove`
