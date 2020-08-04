@@ -10,15 +10,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Controller\TodoController;
 
-class TodoRemoveCommand extends Command
+class TodoCompleteCommand extends Command
 {
-    protected static $defaultName = "remove";
+    protected static $defaultName = "complete";
 
     protected function configure()
     {
         $this
-            ->setDescription("Removes a todo.")
-            ->setHelp("Removes a todo.")
+            ->setDescription("Completes a todo.")
+            ->setHelp("Completes a todo.")
             ->addArgument("id", InputArgument::REQUIRED, "Id of the todo.")
         ;
     }
@@ -38,12 +38,12 @@ class TodoRemoveCommand extends Command
 
         if ($id)
         {
-            if ($this->todoController->remove($id))
+            if ($this->todoController->complete($id))
             {
-                $output->writeln("Removed todo with id " . $id . ".");
+                $output->writeln("Completed todo with id " . $id . ".");
                 return Command::SUCCESS;
             }
-
+            
             $output->writeln("No todo with id " . $id . ".");
             return Command::FAILURE;
         }

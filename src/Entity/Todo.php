@@ -30,7 +30,7 @@ class Todo
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $complete;
+    private $completed;
 
     /**
      * @ORM\Column(type="datetimetz", nullable=true)
@@ -66,14 +66,14 @@ class Todo
         return $this;
     }
 
-    public function getComplete(): ?bool
+    public function getCompleted(): ?bool
     {
-        return $this->complete;
+        return $this->completed;
     }
 
-    public function setComplete(?bool $complete): self
+    public function setCompleted(?bool $completed): self
     {
-        $this->complete = $complete;
+        $this->completed = $completed;
 
         return $this;
     }

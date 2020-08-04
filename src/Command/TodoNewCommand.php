@@ -42,12 +42,12 @@ class TodoNewCommand extends Command
         if ($description)
         {
             $this->todoController->new($description);
-            
+
             $output->writeln("Created new todo!");
             return Command::SUCCESS;
         }
 
-        $output->writeln("Todo description can't be empty!");
+        $output->writeln("Please provide todo description.");
         return Command::FAILURE;
     }
 }

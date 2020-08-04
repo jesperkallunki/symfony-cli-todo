@@ -42,19 +42,23 @@ class TodoAllCommand extends Command
             $table = new Table($output);
         
             $table
-                ->setHeaderTitle("Todos")
-                ->setHeaders(["id", "description", "created"])
+                ->setHeaders(["id", "description", "created", "completed"])
             ;
             
             foreach ($todos as $todo)
             {
+                $tsCompleted = $todo->getTsCompleted();
+                if ($tsCompleted)
+                {
+                    $tsCompleted = $tsCompleted->format("d.m.Y H:m:s");
+                }
+
                 $table
-                    ->setRows([[$todo->getId(), $todo->getDescription(), $todo->getTsCreated()->format("d.m.Y H:m:s")]])
+                    ->addRow([$todo->getId(), $todo->getDescription(), $todo->getTsCreated()->format("d.m.Y H:m:s"), $tsCompleted])
                 ;
             }
     
             $table->render();
-            
             return Command::SUCCESS;
         }
 
