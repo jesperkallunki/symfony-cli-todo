@@ -1,6 +1,7 @@
 ## Install
 
-git clone https://github.com/Jepulisk/symfony-cli-todo.git  
+Clone the repository or manually download.
+
 composer install
 
 ## Database
