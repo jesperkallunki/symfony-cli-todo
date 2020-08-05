@@ -11,16 +11,16 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Controller\TodoController;
 use Symfony\Component\Console\Helper\Table;
 
-class TodoDisplayCommand extends Command
+class TodoListCommand extends Command
 {
-    protected static $defaultName = "todo:display";
+    protected static $defaultName = "todo:list";
 
     protected function configure()
     {
         $this
-            ->setDescription("Displays todos.")
-            ->setHelp("Displays todos.")
-            ->addOption("all", "a", InputOption::VALUE_NONE, "Displays all todos.")
+            ->setDescription("Displays a list of todos.")
+            ->setHelp("Displays a list of todos.")
+            ->addOption("all", "a", InputOption::VALUE_NONE, "Displays a list of all todos.")
         ;
     }
 
@@ -38,7 +38,7 @@ class TodoDisplayCommand extends Command
 
         $all = $input->getOption("all");
 
-        $todos = $this->todoController->display($all);
+        $todos = $this->todoController->list($all);
             
         if ($todos)
         {
@@ -47,19 +47,19 @@ class TodoDisplayCommand extends Command
             if ($all)
             {
                 $table
-                    ->setHeaders(["id", "description", "created", "completed"])
+                    ->setHeaders(["id", "description", "created", "done"])
                 ;
 
                 foreach ($todos as $todo)
                 {
-                    $tsCompleted = $todo->getTsCompleted();
-                    if ($tsCompleted)
+                    $tsDone = $todo->getTsDone();
+                    if ($tsDone)
                     {
-                        $tsCompleted = $tsCompleted->format("d.m.Y H:m:s");
+                        $tsDone = $tsDone->format("d.m.Y H:m:s");
                     }
     
                     $table
-                        ->addRow([$todo->getId(), $todo->getDescription(), $todo->getTsCreated()->format("d.m.Y H:m:s"), $tsCompleted])
+                        ->addRow([$todo->getId(), $todo->getDescription(), $todo->getTsCreated()->format("d.m.Y H:m:s"), $tsDone])
                     ;
                 }
             }

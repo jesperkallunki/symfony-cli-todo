@@ -10,15 +10,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use App\Controller\TodoController;
 
-class TodoCompleteCommand extends Command
+class TodoDoneCommand extends Command
 {
-    protected static $defaultName = "todo:complete";
+    protected static $defaultName = "todo:done";
 
     protected function configure()
     {
         $this
-            ->setDescription("Completes a todo.")
-            ->setHelp("Completes a todo.")
+            ->setDescription("Marks a todo as done.")
+            ->setHelp("Marks a todo as done.")
             ->addArgument("id", InputArgument::REQUIRED, "Id of the todo.")
         ;
     }
@@ -36,9 +36,9 @@ class TodoCompleteCommand extends Command
     {
         $id = $input->getArgument("id");
 
-        $this->todoController->complete($id);
+        $this->todoController->done($id);
 
-        $output->writeln("Completed todo with id " . $id . ".");
+        $output->writeln("Marked todo with id " . $id . " as done.");
         return Command::SUCCESS;
     }
 }

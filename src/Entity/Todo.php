@@ -30,12 +30,12 @@ class Todo
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $completed;
+    private $done;
 
     /**
      * @ORM\Column(type="datetimetz", nullable=true)
      */
-    private $ts_completed;
+    private $ts_done;
 
     public function getId(): ?int
     {
@@ -66,26 +66,26 @@ class Todo
         return $this;
     }
 
-    public function getCompleted(): ?bool
+    public function getDone(): ?bool
     {
-        return $this->completed;
+        return $this->done;
     }
 
-    public function setCompleted(?bool $completed): self
+    public function setDone(?bool $done): self
     {
-        $this->completed = $completed;
+        $this->done = $done;
 
         return $this;
     }
 
-    public function getTsCompleted(): ?\DateTimeInterface
+    public function getTsDone(): ?\DateTimeInterface
     {
-        return $this->ts_completed;
+        return $this->ts_done;
     }
 
-    public function setTsCompleted(?\DateTimeInterface $ts_completed): self
+    public function setTsDone(?\DateTimeInterface $ts_done): self
     {
-        $this->ts_completed = $ts_completed;
+        $this->ts_done = $ts_done;
 
         return $this;
     }

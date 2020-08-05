@@ -13,6 +13,7 @@ Edit the .env file to set up your database and run the following commands in the
 ## Commands
 
 `php bin/console todo:new`  
-`php bin/console todo:display`  
-`php bin/console todo:complete`  
-`php bin/console todo:remove`
+`php bin/console todo:list`  
+`php bin/console todo:done`  
+`php bin/console todo:remove`  
+`php bin/console todo:clear`

@@ -19,7 +19,7 @@ class TodoController extends AbstractController
         $manager->flush();
     }
 
-    public function display($all)
+    public function list($all)
     {
         if ($all)
         {
@@ -32,7 +32,7 @@ class TodoController extends AbstractController
         {
             return $this->getDoctrine()
                 ->getRepository(Todo::class)
-                ->findBy(["completed" => null])
+                ->findBy(["done" => null])
             ;
         }
     }
@@ -51,7 +51,7 @@ class TodoController extends AbstractController
         $manager->flush();
     }
 
-    public function complete($id)
+    public function done($id)
     {
         $todo = $this->getDoctrine()
             ->getRepository(Todo::class)
@@ -60,8 +60,8 @@ class TodoController extends AbstractController
 
         if (!$todo) throw $this->createNotFoundException();
 
-        $todo->setTsCompleted(new \DateTime());
-        $todo->setCompleted(true);
+        $todo->setTsDone(new \DateTime());
+        $todo->setDone(true);
 
         $manager = $this->getDoctrine()->getManager();
         $manager->flush();
@@ -78,7 +78,7 @@ class TodoController extends AbstractController
 
         foreach ($todos as $todo)
         {
-            if ($todo->getCompleted())
+            if ($todo->getDone())
             {
                 $manager->remove($todo);
             }

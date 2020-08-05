@@ -17,8 +17,8 @@ class TodoClearCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription("Removes all completed todos.")
-            ->setHelp("Removes all completed todos.")
+            ->setDescription("Removes all done todos.")
+            ->setHelp("Removes all done todos.")
         ;
     }
 
@@ -35,7 +35,7 @@ class TodoClearCommand extends Command
     {
         $this->todoController->clear();
 
-        $output->writeln("Removed all completed todos.");
+        $output->writeln("Removed all done todos.");
         return Command::SUCCESS;
     }
 }
