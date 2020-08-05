@@ -1,6 +1,6 @@
 ## Install
 
-Clone the repository or manually download.
+Clone the repository or download and unzip.
 
 Run `composer install` in the project root folder.
 
@@ -10,7 +10,7 @@ Edit the .env file to set up your database and run the following commands in the
 `php bin/console make:migration`  
 `php bin/console doctrine:migrations:migrate`
 
-## Usage
+## Commands
 
 `php bin/console todo:new`  
 `php bin/console todo:display`  
